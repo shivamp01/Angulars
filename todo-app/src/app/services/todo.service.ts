@@ -30,4 +30,9 @@ export class TodoService {
     return  await this.http.get<TodoModel[]>(this.baseUri+"/getbyuserid/" + user.userid).toPromise();
     
   }
+
+  async deleteTodo(index :number){
+    //console.log("****"+index)
+      return await this.http.delete(this.baseUri+"/delete/"+index).toPromise();
+  }
 }

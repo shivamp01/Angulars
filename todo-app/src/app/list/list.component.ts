@@ -20,12 +20,13 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.service.todoByUser().then(()=>this.todo);
+    
     if(localStorage.getItem("user")==null){
       this.router.navigate(['login']);
     }
   }
 
+  
   getTodo(){
     this.service.todoById(this.todoid).subscribe(data=> this.todo=data);
     console.log(this.todo.category)
@@ -38,9 +39,17 @@ export class ListComponent implements OnInit {
     
     this.todos=result;
     console.log(result);
+    this.found=true;
   
   });
-  this.found=true;
   }
 
+  delete(index :number){
+     let  ans=confirm("do you want to delete todo?");
+     if(ans){
+        alert(index);
+        this.service.deleteTodo(index+1);
+       // this.router.navigate(['add']);
+     }
+  }
 }
