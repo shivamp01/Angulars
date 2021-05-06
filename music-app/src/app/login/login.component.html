@@ -1,0 +1,27 @@
+<form (ngSubmit)="loggedIn()" #logfrm=ngForm>
+    <table class="table table-dark">
+        <tr><td>Username</td>
+            <td><input name="userid" #userid=ngModel [(ngModel)]="auth.userid" required
+                pattern="[a-zA-Z]{5,}" class="form-control">
+                <span *ngIf="userid.dirty && userid.invalid" class="alert-danger">
+                    User ID is empty or invalid</span>
+            </td>
+        </tr>
+        <tr><td>Password</td>
+            <td><input type="password" name="passwd" #passwd=ngModel [(ngModel)]="auth.passwd" 
+                required pattern="[a-zA-Z0-9]{6,}" class="form-control">
+                <span *ngIf="passwd.dirty && passwd.invalid" class="alert-danger">
+                    Empty or Invalid Password
+                </span>
+            </td>
+        </tr>
+        <tr><td>Role</td>
+            <td><select name="role" [(ngModel)]="auth.role" required class="form-control">
+                <option *ngFor="let r of roles" [value]="r">{{r}}</option>
+            </select></td>
+        </tr>
+        <tr><th colspan="2">
+            <button class="btn btn-success" type="submit" [disabled]=!logfrm.valid>Login</button>
+        </th></tr>
+    </table>
+</form>

@@ -1,0 +1,30 @@
+<form class="form-inline" (ngSubmit)="getFlights()">
+    <label for="id">Source</label> &nbsp; &nbsp;
+    <select class="form-control" name="source" [(ngModel)]=source>
+        <option *ngFor="let r of routes" [value]="r">{{ r }}</option>
+    </select> &nbsp; &nbsp;
+    <label for="id">Destination</label> &nbsp; &nbsp;
+    <select class="form-control" name="destiny" [(ngModel)]=destiny>
+        <option *ngFor="let r of routes" [value]="r">{{ r }}</option>
+    </select> &nbsp; &nbsp;
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+<br>
+<div [hidden]="!found">
+<table style="width:400px;" class="table table-bordered table-striped">
+    <thead>
+        <th>Flight No</th>
+        <th>Carrier</th>
+        <th>Source</th>
+        <th>Destination</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let flight of flights">
+            <td>{{ flight.flightNo }}</td>
+            <td>{{ flight.carrier }}</td>
+            <td>{{ flight.source }}</td>
+            <td>{{ flight.destiny }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

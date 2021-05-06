@@ -1,0 +1,35 @@
+
+<form (ngSubmit)="addTodo()" #addForm="ngForm">
+    <div class="form-group">
+        <label for="task">Task</label>
+        <input class="form-control"  #task='ngModel' name="task" [(ngModel)]=todo.task
+            required  placeholder="task" #task='ngModel'>
+        <span *ngIf="task.dirty && task.invalid" class="alert-danger">
+            Task  is invalid!
+        </span>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" name="category" [(ngModel)]=todo.category>
+            <option *ngFor="let c of category" [value]="c">{{ c }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" name="status" [(ngModel)]=todo.status>
+            <option *ngFor="let s of status" [value]="s">{{ s }}</option>
+        </select>
+    </div>
+   
+    
+    <div class="form-group">
+        <label for="assignDate">Assign date</label>
+        <input  class="form-control" name="assignDate" [(ngModel)]=todo.assignDate>
+    </div>
+    <div class="form-group">
+        <label for="finishDate">Finish date</label>
+        <input  class="form-control" name="finishDate" [(ngModel)]=todo.finishDate>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!addForm.valid">
+        Add Todo</button>
+</form>

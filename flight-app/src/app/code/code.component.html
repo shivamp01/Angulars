@@ -1,0 +1,25 @@
+<form class="form-inline" (ngSubmit)="getFlight()">
+    <label for="id">Flight No</label> &nbsp; &nbsp;
+    <input class="form-control" name="no" [(ngModel)]=no
+        placeholder="Eg:101" required pattern="[0-9]{3,}"> &nbsp; &nbsp;
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+<br>
+<div [hidden]="!searched">
+<table style="width:400px;" class="table table-bordered table-striped">
+    <tbody>
+        <tr><td style="width:200px;">Flight No</td>
+            <td>{{ flight.flightNo }}</td>
+        </tr>
+        <tr><td>Carrier</td>
+            <td>{{ flight.carrier }}</td>
+        </tr>
+        <tr><td>Source</td>
+            <td>{{ flight.source }}</td>
+        </tr>
+        <tr><td>Destination</td>
+            <td>{{ flight.destiny }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

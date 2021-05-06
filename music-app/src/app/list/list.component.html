@@ -1,0 +1,14 @@
+<table class="table table-dark">
+    <tr>
+        <th (click)="orderByTitle()">Title</th>
+        <th (click)="orderByArtist()">Artist</th>
+        <th>Genre</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let a of list; let i = index">
+        <td>{{ a.title }}</td>
+        <td>{{ a.artist }}</td>
+        <td>{{ a.genre }}</td>
+        <td><button class="btn btn-warning" (click)="delete(i)">Delete</button></td>
+    </tr>
+</table>

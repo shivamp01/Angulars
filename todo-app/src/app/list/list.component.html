@@ -1,0 +1,26 @@
+<form (ngSubmit)="getTodoByUserId()" #getform="ngForm">
+    <label for="uid">Enter user id:</label>
+    <input class="form-control"  name="uid" [(ngModel)]=userid
+        required  placeholder="task" #task='ngModel'>
+<button type="submit" [disabled]=!getform.valid>Get Todo</button>
+</form>
+<div [hidden]=!found>
+<table class="table table-dark">
+    <tr>
+        <th>Task</th>
+        <th>category</th>
+        <th>status</th>
+        <th >Assign date</th>
+        <th>Finish date</th>
+        
+    
+    </tr>
+    <tr *ngFor=" let todo1 of todos;">
+        <td>{{ todo1.task }}</td>
+        <td>{{ todo1.category }}</td>
+        <td>{{ todo1.status }}</td>
+        <td>{{ todo1.assignDate }}</td>
+        <td>{{ todo1.finishDate }}</td>
+    </tr>
+</table>
+</div>
